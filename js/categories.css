@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════
+   js/categories.js — Category Limits & Progress
+   focus.io Study Tracker
+═══════════════════════════════════════════ */
+
+function renderCategories() {
+  const tasks = state.tasks;
+
+  /* ── PROGRESS CARDS ── */
+  document.getElementById('catGrid').innerHTML = Object.entries(CATS).map(([k, c]) => {
+    const hrs  = tasks.filter(t => t.cat === k).reduce((s, t) => s + t.hours, 0);
+    const lim  = state.catLimits[k] || 10;
+    const pct  = Math.min(hrs / lim * 100, 100);
+    const over = hrs > lim;
+
+    return `
+      <div class="cat-item">
+        <div class="cat-header">
+          <div class="cat-name">${c.label}</div>
+          <div class="cat-hours" style="color:${over ? 'var(--danger)' : 'var(--text2)'}">
+            ${hrs.toFixed(1)}h / ${lim}h
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${pct}%;background:${over ? 'var(--danger)' : c.color}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  /* ── LIMIT INPUTS ── */
+  document.getElementById('catLimitsForm').innerHTML = Object.entries(CATS).map(([k, c]) => `
+    <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div style="flex:1;font-size:0.83rem">${c.label}</div>
+      <input
+        type="number" min="1" max="200"
+        value="${state.catLimits[k] || 10}"
+        onchange="setCatLimit('${k}', this.value)"
+        style="width:70px;padding:5px 8px;border:1px solid var(--border);
+               border-radius:var(--radius-sm);background:var(--surface2);
+               color:var(--text);font-family:inherit;font-size:0.8rem"
+      />
+      <span style="font-size:0.72rem;color:var(--text3);font-family:'DM Mono',monospace">hrs / week</span>
+    </div>
+  `).join('');
+}
+
+function setCatLimit(k, v) {
+  state.catLimits[k] = parseFloat(v) || 10;
+  saveState();
+  renderCategories();
+}
