@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════
+   base.css — Resets, Typography, Utilities
+   focus.io Study Tracker
+═══════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { font-size: 14px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ── TYPOGRAPHY ── */
+.mono,
+code { font-family: 'DM Mono', monospace; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── VIEW ANIMATION ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ── UTILITY CLASSES ── */
+.flex         { display: flex; }
+.items-center { align-items: center; }
+.gap-2        { gap: 8px; }
+.mt-1         { margin-top: 4px; }
+.mb-3         { margin-bottom: 12px; }
+.text-sm      { font-size: 0.8rem; }
+.text-xs      { font-size: 0.72rem; }
+.text-muted   { color: var(--text2); }
+.font-mono    { font-family: 'DM Mono', monospace; }
+.w-full       { width: 100%; }
+
+/* ── CATEGORY TAGS ── */
+.tag {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+}
+.tag-math  { background: #e8eaf6; color: #3949ab; }
+.tag-cs    { background: #e8f5e9; color: #2e7d32; }
+.tag-sci   { background: #fff3e0; color: #e65100; }
+.tag-eng   { background: #fce4ec; color: #c62828; }
+.tag-other { background: var(--surface2); color: var(--text2); }
+
+[data-theme="dark"] .tag-math  { background: #1a1c3a; color: #7986cb; }
+[data-theme="dark"] .tag-cs    { background: #1a2e1a; color: #66bb6a; }
+[data-theme="dark"] .tag-sci   { background: #2a1e0a; color: #ffa726; }
+[data-theme="dark"] .tag-eng   { background: #2a1016; color: #ef9a9a; }
+
+/* ── PRIORITY DOTS ── */
+.priority-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.p-high { background: var(--danger); }
+.p-med  { background: var(--warn); }
+.p-low  { background: var(--success); }
+
+/* ── EMPTY STATE ── */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text3);
+  font-size: 0.82rem;
+}
+.empty-icon { font-size: 2rem; margin-bottom: 8px; }
