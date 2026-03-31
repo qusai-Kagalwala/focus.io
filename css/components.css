@@ -1,0 +1,163 @@
+/* ═══════════════════════════════════════════
+   components.css — Buttons, Cards, Modal, Forms
+   focus.io Study Tracker
+═══════════════════════════════════════════ */
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  transition: all var(--transition);
+}
+.btn:hover         { background: var(--surface2); }
+.btn-primary       { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { opacity: 0.88; background: var(--accent); }
+.btn-icon          { padding: 6px 8px; }
+.theme-toggle      { font-size: 15px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  font-family: 'DM Mono', monospace;
+}
+.card-link {
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.7rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ── STAT CARDS ── */
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.stat-label   { font-size: 0.7rem; color: var(--text3); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.7px; }
+.stat-val     { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.5px; margin: 4px 0 2px; }
+.stat-sub     { font-size: 0.72rem; color: var(--text2); }
+.stat-accent  { color: var(--accent); }
+.stat-accent2 { color: var(--accent2); }
+.stat-accent3 { color: var(--accent3); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-md);
+  animation: modalIn 150ms ease;
+}
+.modal-title   { font-size: 1rem; font-weight: 600; margin-bottom: 18px; }
+.modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+
+/* ── FORM ELEMENTS ── */
+.form-group  { margin-bottom: 14px; }
+.form-label  {
+  font-size: 0.72rem;
+  color: var(--text2);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 5px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: all var(--transition);
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus { outline: none; border-color: var(--accent); }
+.form-textarea { resize: vertical; min-height: 70px; }
+
+/* ── PROGRESS BAR ── */
+.progress-bar  { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 2px; transition: width 600ms ease; }
+
+/* ── HUD ROWS ── */
+.hud-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.hud-row:last-child { border-bottom: none; }
+.hud-label { font-size: 0.75rem; color: var(--text2); flex: 1; }
+.hud-val   { font-size: 0.8rem; font-weight: 500; font-family: 'DM Mono', monospace; }
+.hud-bar   { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.hud-bar-fill { height: 100%; border-radius: 2px; }
+
+/* ── FULLSCREEN CLOCK ── */
+.clock-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.clock-overlay.active { display: flex; }
+.clock-big      { font-size: 12vw; font-weight: 300; font-family: 'DM Mono', monospace; letter-spacing: -3px; color: var(--text); }
+.clock-date-big { font-size: 1.4rem; color: var(--text3); font-family: 'DM Mono', monospace; margin-top: 10px; }
+.clock-close    {
+  position: absolute; top: 24px; right: 24px;
+  background: none; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 6px 14px;
+  cursor: pointer; color: var(--text2);
+  font-family: inherit; font-size: 0.8rem;
+  transition: all var(--transition);
+}
+.clock-close:hover { background: var(--surface2); color: var(--text); }
