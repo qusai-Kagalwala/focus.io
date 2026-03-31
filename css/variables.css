@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════
+   variables.css — Design Tokens
+   focus.io Study Tracker
+═══════════════════════════════════════════ */
+
+:root {
+  /* Backgrounds */
+  --bg:       #f5f4f0;
+  --surface:  #ffffff;
+  --surface2: #f0efe9;
+  --border:   #e2e0d8;
+
+  /* Text */
+  --text:  #1a1916;
+  --text2: #6b6860;
+  --text3: #9b9890;
+
+  /* Accent colours */
+  --accent:        #2c5f2e;
+  --accent-light:  #e8f0e8;
+  --accent2:       #d4613a;
+  --accent2-light: #fdf0eb;
+  --accent3:       #4a7fb5;
+
+  /* Semantic */
+  --danger:  #c0392b;
+  --success: #2c7a4b;
+  --warn:    #b8860b;
+
+  /* Activity heatmap */
+  --heat0: #eceae4;
+  --heat1: #c8dfc9;
+  --heat2: #8fc292;
+  --heat3: #52a355;
+  --heat4: #2c6e2e;
+
+  /* Elevation */
+  --shadow:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+
+  /* Shape */
+  --radius:    10px;
+  --radius-sm: 6px;
+
+  /* Motion */
+  --transition: 180ms ease;
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg:       #111110;
+  --surface:  #1c1c1a;
+  --surface2: #252523;
+  --border:   #2e2e2b;
+
+  --text:  #f0ede8;
+  --text2: #9b9890;
+  --text3: #5a5855;
+
+  --accent:        #5aaa5d;
+  --accent-light:  #1a2e1a;
+  --accent2:       #e07a56;
+  --accent2-light: #2a1a14;
+  --accent3:       #6a9fd8;
+
+  --danger:  #e05a4a;
+  --success: #5aaa7a;
+  --warn:    #e0b84a;
+
+  --heat0: #222220;
+  --heat1: #1e3a20;
+  --heat2: #265c28;
+  --heat3: #388a3c;
+  --heat4: #5aaa5d;
+
+  --shadow:    0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+}
